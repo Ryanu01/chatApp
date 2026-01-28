@@ -42,7 +42,7 @@ wss.on("connection", (socket) => {
 
       const curentUserRoom = allSocket.find(x => x.socket === socket)
 
-      const allUsersInRoom = allSocket.filter(x => x.roomId == curentUserRoom?.roomId)
+      const allUsersInRoom = allSocket.filter(x => x.roomId == curentUserRoom?.roomId && x.socket !== socket)
 
       allUsersInRoom.map(x => x.socket.send(parsedMessage.payload.message))
     }
